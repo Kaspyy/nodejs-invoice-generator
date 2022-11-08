@@ -1,11 +1,4 @@
-import express from 'express';
-const app = express();
-const port = 3000;
+import createInvoice from './utils/pdf-generator/pdf-generator';
+import invoiceDetails from './data/clients';
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
-
-app.listen(port, () => {
-  return console.log(`Express is listening at http://localhost:${port}`);
-});
+createInvoice(invoiceDetails, 'invoice.pdf');
