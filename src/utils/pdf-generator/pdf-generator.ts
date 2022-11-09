@@ -1,13 +1,20 @@
 import fs from 'fs';
 import PDFDocument from 'pdfkit';
 import { Invoice } from '../../types/types';
-import { generateFooter, generateHeader } from './helpers';
+import {
+  generateCustomerInformation,
+  generateFooter,
+  generateHeader,
+  generateInvoiceTable,
+} from './helpers';
 
 const createInvoice = (invoice: Invoice, path: string) => {
   let doc = new PDFDocument({ margin: 50 });
 
-  generateHeader(doc); // Invoke `generateHeader` function.
-  generateFooter(doc); // Invoke `generateFooter` function.
+  generateHeader(doc);
+  generateCustomerInformation(doc, invoice);
+  generateInvoiceTable(doc, invoice);
+  generateFooter(doc);
 
   doc.end();
   doc.pipe(fs.createWriteStream(path));
