@@ -1,7 +1,10 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 const client = {
   shipping: {
     name: 'John Doe',
-    email: '',
+    email: process.env.RECEIVER_EMAIL, // for testing purposes
     address: '1234 Main Street',
     city: 'San Francisco',
     state: 'CA',

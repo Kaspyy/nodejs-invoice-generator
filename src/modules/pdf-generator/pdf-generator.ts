@@ -9,7 +9,7 @@ import {
 } from './helpers';
 
 const createInvoice = (invoice: Invoice, path: string) => {
-  let doc = new PDFDocument({ margin: 50 });
+  const doc = new PDFDocument({ margin: 50 });
 
   generateHeader(doc);
   generateCustomerInformation(doc, invoice);
@@ -20,4 +20,4 @@ const createInvoice = (invoice: Invoice, path: string) => {
   doc.pipe(fs.createWriteStream(path));
 };
 
-export default createInvoice;
+export { createInvoice };
