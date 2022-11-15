@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
 import { google } from 'googleapis';
-import { Invoice } from '../types/types';
+import { Invoice } from '../../types/types';
+import { generateHTML } from './helpers';
 
 dotenv.config();
 
@@ -23,7 +24,7 @@ const sendEmail = async (invoice: Invoice) => {
     from: `ForeShop Inc. <${SENDER_EMAIL}>`,
     to: shipping.email,
     subject: `Invoice #${invoice_nr}`,
-    text: `Please find attached the invoice for the recent purchase.`,
+    html: generateHTML(shipping.name),
     attachments: [
       {
         filename: 'invoice.pdf',
