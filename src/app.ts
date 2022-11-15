@@ -1,5 +1,5 @@
 import { createInvoice } from './modules/pdf-generator/pdf-generator';
-import { sendEmail } from './modules/email-sender';
+import { sendEmail } from './modules/email-sender/email-sender';
 import invoice from './data/clients';
 
 const { invoice_nr } = invoice;
